@@ -11,6 +11,7 @@ export default function Home() {
       <h1 className={styles.title}>Os melhores conteúdos <br /> em um só lugar</h1>
       <Image className={styles.logo} src={jwfsLogo} alt="logo" />
       <Link href='' className={styles.signButton}>Assine agora</Link>
+      <span className={styles.valueText}>R$ 30,00/mês ou R$ 299/ano à vista*</span>
     </div>
   );
 }
