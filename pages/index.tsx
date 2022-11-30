@@ -1,6 +1,6 @@
 import styles from '../styles/Index.module.css';
 import Image from 'next/image';
-import backgroundImage from '../public/background.png';
+import backgroundImage from '../public/images/background.webp';
 import jwfsLogo from '../public/jwfs-logo.png';
 
 export default function Home() {
