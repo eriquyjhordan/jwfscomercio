@@ -55,3 +55,44 @@
   right: 10%;
   text-align: center;
 }
+
+.tveExpress {
+  position: absolute;
+  top: 88%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 262px;
+  height: 89px;
+  object-fit: contain;
+}
+
+.myFamilyCinema { 
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 292px;
+  height: 97px;
+  object-fit: contain;
+}
+
+.mundoKids {
+  position: absolute;
+  top: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 173px;
+  height: 119px;
+  object-fit: contain;
+}
+
+.youtubePremium {
+  position: absolute;
+  top: 160%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 278px;
+  height: 52px;
+  object-fit: contain;
+}
+
