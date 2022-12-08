@@ -38,23 +38,23 @@ export default function Home() {
             Os melhores conteúdos <br /> em um só lugar.
           </h2>
           <Image src={jwfsLogo} alt="JWFS" className={styles.logo} />
-          <Link href='' className={styles.signButton}>Assine agora</Link>
+          <Link href='https://api.whatsapp.com/send?phone=5527999819941&text=Ol%C3%A1,%20gostaria%20de%20assinar%20o%20acesso%20%C3%A0%20TV%20e%20s%C3%A9ries%20ilimitadas.' className={styles.signButton}>Assine agora</Link>
           <span className={styles.valueText}>R$ 30,00/mês ou R$ 299/ano à vista*</span>
           <div className={styles.images}>
-            <Link href=''>
+            <Link href='#knewTheTve'>
               <Image src={tveExpress} alt="TVE Express" className={styles.tveExpress} />
             </Link>
-            <Link href=''>
+            <Link href='#knewTheMfc'>
               <Image src={myFamilyCinema} alt="My Family Cinema" className={styles.mfc} />
             </Link>
-            <Link href=''>
+            <Link href='#knewTheKidsWorld'>
               <Image src={mundoKids} alt="Mundo Kids" className={styles.mundoKids} />
             </Link>
-            <Link href=''>
+            <Link href='#knewTheSmartTube'>
               <Image src={youtubePremium} alt="Youtube Premium" className={styles.youtubePremium} />
             </Link>
           </div>
-          <div className={styles.knewTheTve}>
+          <div className={styles.knewTheTve} id='knewTheTve'>
             <Image src={tveLogo} alt="TVE Express" className={styles.tveLogo} />
             <span className={styles.knewTheTveText}>Conheça o <br /> Tve Express</span>
           </div>
@@ -64,7 +64,7 @@ export default function Home() {
             </span>
             <Image src={tveExample} alt="TVE Express" className={styles.tveExample} />
           </div>
-          <div className={styles.knewTheMfc}>
+          <div className={styles.knewTheMfc} id='knewTheMfc'>
             <Image src={mfcLogo} alt="My Family Cinema" className={styles.mfcLogo} />
             <span className={styles.knewTheMfcText}>Conheça o My <br /> Family Cinema</span>
           </div>
@@ -74,7 +74,7 @@ export default function Home() {
             </span>
             <Image src={mfcExample} alt="My Family Cinema" className={styles.mfcExample} />
           </div>
-          <div className={styles.knewTheKidsWorld}>
+          <div className={styles.knewTheKidsWorld} id='knewTheKidsWorld'>
             <Image src={mundoKidsLogo} alt="Mundo Kids" className={styles.mundoKidsLogo} />
             <span className={styles.knewTheKidsWorldText}>Conheça o <br /> Mundo  Kids</span>
           </div>
@@ -84,7 +84,7 @@ export default function Home() {
             </span>
             <Image src={mundoKidsExample} alt="Mundo Kids" className={styles.mundoKidsExample} />
           </div>
-          <div className={styles.knewTheSmartTube}>
+          <div className={styles.knewTheSmartTube} id='knewTheSmartTube'>
             <Image src={smartTubeLogo} alt="Smart Tube" className={styles.smartTubeLogo} />
             <span className={styles.knewTheSmartTubeText}>Conheça o <br /> Smart Tube</span>
           </div>
@@ -98,7 +98,7 @@ export default function Home() {
             <span className={styles.buyNowText}>Adquira agora o acesso a todos aplicativos por apenas
               <br /> <span className={styles.price}>R$ 30,00</span> Mensais</span>
             <div className={styles.signButtonContainer}>
-              <Link href='' className={styles.signButton}>Assine agora</Link>
+              <Link href='https://api.whatsapp.com/send?phone=5527999819941&text=Ol%C3%A1,%20gostaria%20de%20assinar%20o%20acesso%20%C3%A0%20TV%20e%20s%C3%A9ries%20ilimitadas.' className={styles.signButton}>Assine agora</Link>
               <span className={styles.valueText}>R$ 30,00/mês ou R$ 299/ano à vista*</span>
             </div>
           </div>
