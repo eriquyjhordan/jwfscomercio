@@ -24,7 +24,7 @@ export default function Home() {
         <h1>Desculpe este site está disponível somente para celulares...</h1>
         <h2>Em breve teremos a versão para computadores</h2>
       </div>
-      <div style={{
+      <div className={styles.mobile} style={{
         backgroundImage: `url(${backgroundImage.src})`,
         height: '64.5rem',
         width: '43rem',
