@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  padding-inline: 10%;
+}
+
+.illustration {
+  margin-top: 10rem;
+}
+
+.forgotPassword {
+  margin-top: 1rem;
+  margin-bottom: 2.4rem;
+  color: #CACACA;
+  font-size: 1.2rem;
+  line-height: 150%;
+  font-weight: lighter;
+  align-self: flex-end;
+}
+
+.createAnAccout {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 150%;
+  color: #CACACA;
+  align-self: flex-start;
+  margin-top: 4rem;
+}
