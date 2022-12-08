@@ -12,17 +12,27 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Image className={styles.backgroundImage} src={backgroundImage} alt="background image" />
-      <h1 className={styles.title}>Os melhores conteúdos <br /> em um só lugar</h1>
-      <Image className={styles.logo} src={jwfsLogo} alt="logo" />
-      <Link href='' className={styles.signButton}>Assine agora</Link>
-      <span className={styles.valueText}>R$ 30,00/mês ou R$ 299/ano à vista*</span>
-      <Image src={tveExpress} className={styles.tveExpress} alt="tve express" />
-      <Image src={myFamilyCinema} className={styles.myFamilyCinema} alt="my family cinema" />
-      <Image src={mundoKids} className={styles.mundoKids} alt="mundo kids" />
-      <Image src={youtubePremium} className={styles.youtubePremium} alt="youtube premium" />
-
-    </div>
+    <>
+      <div className={styles.desktop}>
+        <h1>Desculpe este site está disponível somente para celulares...</h1>
+        <h2>Em breve teremos a versão para computadores</h2>
+      </div>
+      <div style={{
+        backgroundImage: `url(${backgroundImage.src})`,
+        height: '64.5rem',
+        width: '43rem',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        zIndex: -1,
+      }}>
+        <div className={styles.content}>
+          <h2 className={styles.title}>
+            Os melhores conteúdos <br /> em um só lugar.
+          </h2>
+          <Image src={jwfsLogo} alt="JWFS" className={styles.logo} />
+        </div>
+      </div>
+    </>
   );
 }

@@ -1,98 +1,54 @@
-.container {
-  max-width: 761px;
-  margin: 0 auto;
-  position: relative;
+@media (min-width: 570px) {
+  .mobile {
+    display: none;
+  }
+  .desktop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .desktop h1, .desktop h2 {
+    color: #fff;
+    text-align: center;
+  }
+  .desktop h1 {
+    font-size: 3.6rem;
+    font-weight: 700;
+    margin-top: 4.8rem;
+  }
+  .desktop h2 {
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin-top: 1.6rem;
+  }
+}
+@media  (max-width: 761px) {
+  .desktop {
+   display: none;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 24rem;
 }
 
 .title {
+  margin: 0;
+  padding: 0;
+  font-size: 3rem;
   color: #fff;
-  font-size: 1.5rem;
-  position: absolute;
-  top: 33%;
-  left: 10%;
-  right: 10%;
   text-align: center;
-}
-
-.backgroundImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+} 
 
 .logo {
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 250px;
-  height: 250px;
-  object-fit: contain;
+  margin-top: 3rem;
+  width: 13rem;
+  height: 6.8rem;
 }
-
-.signButton {
-  width: 320px;
-  height: 50px;
-  background-color: #6421FF;
-  border: none;
-  color: #fff;
-  font-size: 15px;
-  font-weight: lighter;
-  position: absolute;
-  top: 68%;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  line-height: 50px;
-}
-
-.valueText {
-  color: #fff;
-  font-size: 14px;
-  position: absolute;
-  top: 78%;
-  left: 10%;
-  right: 10%;
-  text-align: center;
-}
-
-.tveExpress {
-  position: absolute;
-  top: 88%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 262px;
-  height: 89px;
-  object-fit: contain;
-}
-
-.myFamilyCinema { 
-  position: absolute;
-  top: 110%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 292px;
-  height: 97px;
-  object-fit: contain;
-}
-
-.mundoKids {
-  position: absolute;
-  top: 130%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 173px;
-  height: 119px;
-  object-fit: contain;
-}
-
-.youtubePremium {
-  position: absolute;
-  top: 160%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 278px;
-  height: 52px;
-  object-fit: contain;
-}
-
+    
