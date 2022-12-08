@@ -6,9 +6,10 @@ interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   name: string;
   type: string;
   marginTop?: string;
+  width?: string;
 }
 
-export default function Input({ placeholder, marginTop, label, name, type, ...rest }: InputProps) {
+export default function Input({ placeholder, width, marginTop, label, name, type, ...rest }: InputProps) {
   return (
     <div>
       <label
@@ -29,7 +30,7 @@ export default function Input({ placeholder, marginTop, label, name, type, ...re
           type={type}
           placeholder={placeholder}
           style={{
-            width: '32.7rem',
+            width: width || '32.7rem',
             height: '4.6rem',
             display: 'block',
             border: 'none',

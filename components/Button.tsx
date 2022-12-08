@@ -5,9 +5,10 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   backgroundColor: '#6421FF' | '#0072D2' | string;
   color: '#F9F9F9' | string;
   fontWeight: 'lighter' | 'normal' | 'bold' | string;
+  marginTop?: string;
 }
 
-export default function Button({ text, backgroundColor, color, fontWeight, ...rest }: ButtonProps) {
+export default function Button({ text, marginTop, backgroundColor, color, fontWeight, ...rest }: ButtonProps) {
   return (
     <div>
       <button
@@ -26,6 +27,7 @@ export default function Button({ text, backgroundColor, color, fontWeight, ...re
           textAlign: 'center',
           lineHeight: '5rem',
           borderRadius: '0.4rem',
+          marginTop: marginTop,
         }}
       >{text}</button>
     </div>
