@@ -31,6 +31,8 @@ export default function Home() {
             Os melhores conteúdos <br /> em um só lugar.
           </h2>
           <Image src={jwfsLogo} alt="JWFS" className={styles.logo} />
+          <Link href='' className={styles.signButton}>Assine agora</Link>
+          <span className={styles.valueText}>R$ 30,00/mês ou R$ 299/ano à vista*</span>
         </div>
       </div>
     </>
