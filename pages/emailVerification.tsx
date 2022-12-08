@@ -38,11 +38,6 @@ export default function EmailVerification() {
         <Link href="/">
           <Image src={gmailButton} alt="Gmail button" className={styles.imageButton} />
         </Link>
-        <p className={styles.needHelpTitle}>Precisa de Ajuda?</p>
-        <span className={styles.needHelpDescription}>Entre em contato através do <br /> WhatsApp</span>
-        <Link href='/'>
-          <Image src={whatsappButton} alt="Whatsapp button" className={styles.imageButton} />
-        </Link>
       </div>
     </>
   )
