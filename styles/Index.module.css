@@ -47,13 +47,14 @@
 } 
 
 .logo {
-  margin-top: 3rem;
+  margin-top: 3.2rem;
   width: 13rem;
   height: 5.8rem;
 }
 
 .signButton {
-  margin-top: 3rem;
+  display: block;
+  margin-top: 3.2rem;
   width: 320px;
   height: 50px;
   background-color: #6421FF;
@@ -71,4 +72,327 @@
   font-size: 14px;
   text-align: center;
 }
-    
+
+.images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+.tveExpress {
+  width: 26.2rem;
+  height: 8.9rem;
+}
+
+.mfc {
+  margin-top: 3.6rem;
+  width: 29.2rem;
+  height: 9.7rem;
+}
+
+.mundoKids {
+  margin-top: 3.6rem;
+  width: 17.3rem;
+  height: 11.9rem;
+}
+
+.youtubePremium {
+  margin-top: 3.6rem;
+  width: 27.8rem;
+  height: 5.2rem;
+}
+
+.knewTheTve {
+  margin-top: 3.6rem;
+  width: 100%;
+  height: 19rem;
+  background-color: #000;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.tveLogo {
+  width: 8.8rem;
+  height: 8.9rem;
+}
+
+.knewTheTveText {
+  margin-left: 1.6rem;
+  font-size: 3.2rem;
+  font-weight: 400;
+  color: #fff;
+  line-height: 150%;
+  max-width: 20.2rem;
+}
+
+.knewTheTveText::after {
+  content: '';
+  display: block;
+  width: 12        rem;
+  height: 0.8rem;
+  background-color: #45275F;
+  margin-top: 1.6rem;
+}
+
+.kewTheTveContent {
+  margin-top: 3.6rem;
+  padding-inline: 5.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.knewTheTveContentText {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #fff;
+  line-height: 150%;
+  text-align: center;
+  margin-top: 1.6rem;
+  max-width: 32.2rem;
+}
+
+.tveExample {
+  width: 32.2rem;
+  height: 23.4rem;
+  margin-top: 3.6rem;
+}
+
+.knewTheMfc {
+  margin-top: 6rem;
+  width: 100%;
+  height: 19rem;
+  background-color: #000;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.mfcLogo {
+  width: 9.3rem;
+  height: 7.5rem;
+}
+
+.knewTheMfcText {
+  margin-left: 2.4rem;
+  font-size: 3.2rem;
+  font-weight: 400;
+  color: #fff;
+  line-height: 150%;
+  max-width: 25.3rem;
+}
+
+.knewTheMfcText::after {
+  content: '';
+  display: block;
+  width: 12rem;
+  height: 0.8rem;
+  background-color: #F26522;
+  margin-top: 1.6rem;
+}
+
+.knewTheMfcContent {
+  margin-top: 3.6rem;
+  padding-inline: 5.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.knewTheMfcContentText {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #fff;
+  line-height: 150%;
+  text-align: center;
+  margin-top: 1.6rem;
+}
+
+.mfcExample {
+  width: 32.2rem;
+  height: 60.2rem;
+  margin-top: 3.6rem;
+}
+
+.knewTheKidsWorld {
+  margin-top: 6rem;
+  width: 100%;
+  height: 19rem;
+  background-color: #000;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.mundoKidsLogo {
+  width: 7.8rem;
+  height: 7.8rem;
+}
+
+.knewTheKidsWorldText {
+  margin-left: 3.2rem;
+  font-size: 3.2rem;
+  font-weight: 400;
+  color: #fff;
+  line-height: 150%;
+  max-width: 25.3rem;
+}
+
+.knewTheKidsWorldText::after {
+  content: '';
+  display: block;
+  width: 12rem;
+  height: 0.8rem;
+  background-color: #F94B54;
+  margin-top: 1.6rem;
+}
+
+.knewTheKidsWorldContent {
+  margin-top: 3.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.knewTheKidsWorldContentText {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #fff;
+  line-height: 150%;
+  text-align: center;
+  margin-top: 1.6rem;
+  max-width: 32.2rem;
+}
+
+.mundoKidsExample {
+  width: 36.3rem;
+  height: 20.4rem;
+  margin-top: 3.6rem;
+}
+
+.knewTheSmartTube {
+  margin-top: 6rem;
+  width: 100%;
+  height: 19rem;
+  background-color: #000;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.smartTubeLogo {
+  width: 7.8rem;
+  height: 7.8rem;
+}
+
+.knewTheSmartTubeText {
+  margin-left: 3.2rem;
+  font-size: 3.2rem;
+  font-weight: 400;
+  color: #fff;
+  line-height: 150%;
+  max-width: 25.3rem;
+}
+
+.knewTheSmartTubeText::after {
+  content: '';
+  display: block;
+  width: 12rem;
+  height: 0.8rem;
+  background-color: #EF0800;
+  margin-top: 1.6rem;
+}
+
+.knewTheSmartTubeContent {
+  margin-top: 3.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.knewTheSmartTubeContentText {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #fff;
+  line-height: 150%;
+  text-align: center;
+  margin-top: 1.6rem;
+  max-width: 32.2rem;
+}
+
+.smartTubeExample {
+  width: 32.2rem;
+  height: 18.2rem;
+  margin-top: 3.6rem;
+}
+
+.buyNow {
+  margin-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.buyNowText {
+  font-size: 3.2rem;
+  font-weight: 400;
+  color: #fff;
+  line-height: 150%;
+  text-align: center;
+  margin-top: 1.6rem;
+  max-width: 35.4rem;
+}
+
+.price {
+  color: #F26522;
+}
+
+.signButtonContainer {
+  margin-top: 3.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer {
+  margin-top: 6rem;
+  width: 100%;
+  height: 40rem;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerText {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #fff;
+  line-height: 150%;
+  text-align: center;
+  margin-top: 1.6rem;
+  max-width: 32.2rem;
+}
+
+.footerTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 150%;
+  text-align: center;
+  margin-top: 1.6rem;
+  max-width: 32.2rem;
+}
