@@ -16,10 +16,20 @@ import smartTubeLogo from '../public/images/smart-tube-logo.webp';
 import smartTubeExample from '../public/images/smart-tube-example.webp';
 
 import Link from 'next/link';
+import Head from 'next/head';
 
 export default function Home() {
   return (
     <>
+      <Head>
+        <style>
+          {`
+            body {
+              background-color: #060918;
+            }
+          `}
+        </style>
+      </Head>
       <div className={styles.desktop}>
         <h1>Desculpe este site está disponível somente para celulares...</h1>
         <h2>Em breve teremos a versão para computadores</h2>

@@ -1,0 +1,73 @@
+@media  (max-width: 761px) {
+  .desktop {
+   display: none;
+  }
+}
+@media (min-width: 570px) {
+  .mobile {
+    display: none;
+  }
+  .desktop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .desktop h1, .desktop h2 {
+    color: #fff;
+    text-align: center;
+  }
+  .desktop h1 {
+    font-size: 3.6rem;
+    font-weight: 700;
+    margin-top: 4.8rem;
+  }
+  .desktop h2 {
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin-top: 1.6rem;
+  }
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.illustration {
+  margin-top: 10rem;
+  text-align: center;
+}
+
+.warninText {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 150%;
+  text-align: center;
+  color: #FFFFFF;
+  padding: 0 5rem;
+}
+
+.imageButton {
+  width: 32.7rem;
+  height: 5rem;
+  margin-top: 2.4rem;
+}
+
+.needHelpTitle {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 150%;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.needHelpDescription {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 150%;
+  text-align: center;
+  color: #FFFFFF;
+}
