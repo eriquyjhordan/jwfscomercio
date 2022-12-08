@@ -12,45 +12,52 @@ export default function Login() {
 
 
   return (
-    <div className={styles.wrapper}>
-      <Head>
-        <style>
-          {`
+    <>
+      <div className={styles.desktop}>
+        <h1>Desculpe este site está disponível somente para celulares...</h1>
+        <h2>Em breve teremos a versão para computadores</h2>
+      </div>
+      <div className={`${styles.wrapper} ${styles.mobile}`}>
+        <Head>
+          <style>
+            {`
             body {
               background: linear-gradient(0deg, #060918 10.94%, #14253D 85%) !important;
             }
           `}
-        </style>
-      </Head>
-      <h1 className={styles.illustration}>
-        <Image src={loginIllustrator} alt="Login Illustrator" width={236} height={172} />
-      </h1>
-      <Input
-        placeholder="Digite seu e-mail"
-        label="Use seu e-mail"
-        name="email"
-        type="email"
-        marginTop="5.6rem"
-      />
-      <Input
-        placeholder="Digite sua senha"
-        label="Use sua senha"
-        name="password"
-        type="password"
-        marginTop="2.4rem"
-      />
-      <Link href="/" className={styles.forgotPassword}>
-        Esqueceu sua senha?
-      </Link>
-      <Button
-        text="Entrar"
-        fontWeight="bold"
-        backgroundColor="#0072D2"
-        color="#f9f9f9"
-      />
-      <Link href="/" className={styles.createAnAccout}>
-        Não tem uma conta? Crie aqui
-      </Link>
-    </div>
+          </style>
+        </Head>
+
+        <h1 className={styles.illustration}>
+          <Image src={loginIllustrator} alt="Login Illustrator" width={236} height={172} />
+        </h1>
+        <Input
+          placeholder="Digite seu e-mail"
+          label="Use seu e-mail"
+          name="email"
+          type="email"
+          marginTop="5.6rem"
+        />
+        <Input
+          placeholder="Digite sua senha"
+          label="Use sua senha"
+          name="password"
+          type="password"
+          marginTop="2.4rem"
+        />
+        <Link href="/" className={styles.forgotPassword}>
+          Esqueceu sua senha?
+        </Link>
+        <Button
+          text="Entrar"
+          fontWeight="bold"
+          backgroundColor="#0072D2"
+          color="#f9f9f9"
+        />
+        <Link href="/" className={styles.createAnAccout}>
+          Não tem uma conta? Crie aqui
+        </Link>
+      </div>
+    </>
   );
 }
