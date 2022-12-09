@@ -1,6 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../redux/index";
+import {
+  setFullname,
+  setZipcode,
+  setIsConsultCep,
+  setAddress,
+  clearAddress,
+  setStreet,
+  setNeighborhood,
+  setCity,
+  setState,
+} from "../redux/signUp.store";
+
 import Head from "next/head";
 import Image from "next/image";
+
+import cepPromisse from 'cep-promise';
+
 import styles from '../styles/signup.module.css';
 
 import jwfsLogo from '../public/jwfs-logo.png';
@@ -8,6 +26,32 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 
 export default function Signup() {
+  const dispatch = useDispatch();
+  const signUp = useSelector((state: RootState) => state.signUp);
+
+  useEffect(() => {
+    if (signUp.zipcode !== '' && !(signUp.zipcode.split('-')[0].includes('_') || signUp.zipcode.split('-')[1].includes('_'))) {
+      dispatch(setIsConsultCep(true));
+      cepPromisse(signUp.zipcode)
+        .then((response) => {
+          dispatch(setAddress({
+            street: response.street,
+            neighborhood: response.neighborhood,
+            city: response.city,
+            state: response.state,
+          }));
+          document.getElementById('number')?.focus();
+        })
+        .catch((error) => {
+          dispatch(setIsConsultCep(false));
+          dispatch(clearAddress());
+          console.log(error.errors);
+        })
+        .finally(() => {
+          dispatch(setIsConsultCep(false));
+        })
+    }
+  }, [signUp.zipcode])
   return (
     <>
       <Head>
@@ -25,21 +69,26 @@ export default function Signup() {
       </div>
       <div className={`${styles.wrapper} ${styles.mobile}`}>
         <h1 className={styles.logo}>
-          <Image src={jwfsLogo} alt="jwfs Logo" width={130} height={68} />
+          <Image src={jwfsLogo} alt="jwfs Logo" width={130} height={68} priority />
         </h1>
-        <div className={`${styles.form} ${styles.fistForm}`}>
+        <form className={`${styles.form} ${styles.fistForm}`}>
           <Input
             label="Nome Completo"
             type="text"
             placeholder="Digite seu nome completo"
-            name="name"
+            name="fullName"
+            value={signUp.fullname}
+            onChange={({ target }) => dispatch(setFullname(target.value))}
           />
           <Input
             label="Digite seu CEP"
-            type="number"
+            type="string"
             placeholder="Digite seu CEP"
             name="cep"
             marginTop="2.4rem"
+            value={signUp.zipcode}
+            mask="99999-999"
+            onChange={(e) => dispatch(setZipcode(e.target.value))}
           />
           <div className={styles.inlineInputs}>
             <Input
@@ -49,6 +98,9 @@ export default function Signup() {
               name="street"
               marginTop="2.4rem"
               width="23.3rem"
+              disable={signUp.isConsultCep}
+              value={signUp.isConsultCep ? 'Aguarde consultando cep...' : signUp.street}
+              onChange={(e) => dispatch(setStreet(e.target.value))}
             />
             <Input
               label="Número"
@@ -59,14 +111,27 @@ export default function Signup() {
               width="8.6rem"
             />
           </div>
+          <Input
+            label="Bairro"
+            type="text"
+            placeholder="Digite sua bairro"
+            name="neighborhood"
+            marginTop="2.4rem"
+            disable={signUp.isConsultCep}
+            value={signUp.isConsultCep ? 'Aguarde consultando cep...' : signUp.neighborhood}
+            onChange={(e) => dispatch(setNeighborhood(e.target.value))}
+          />
           <div className={styles.inlineInputs}>
             <Input
-              label="Bairro"
+              label="Cidade"
               type="text"
-              placeholder="Digite sua bairro"
-              name="neighborhood"
+              placeholder="Digite sua cidade"
+              name="city"
               marginTop="2.4rem"
               width="23.3rem"
+              disable={signUp.isConsultCep}
+              value={signUp.isConsultCep ? 'Aguarde consultando cep...' : signUp.city}
+              onChange={(e) => dispatch(setCity(e.target.value))}
             />
             <Input
               label="UF"
@@ -75,6 +140,9 @@ export default function Signup() {
               name="uf"
               marginTop="2.4rem"
               width="8.6rem"
+              disable={signUp.isConsultCep}
+              value={signUp.isConsultCep ? 'Aguarde consultando cep...' : signUp.state}
+              onChange={(e) => dispatch(setState(e.target.value))}
             />
           </div>
           <Input
@@ -89,10 +157,12 @@ export default function Signup() {
             backgroundColor="#0072D2"
             color="#F9F9F9"
             fontWeight="normal"
-            marginTop="6rem"
+            marginTop="4rem"
+            type="submit"
+            style={{ marginBottom: '10rem' }}
           />
-        </div>
-        <div className={`${styles.form} ${styles.secondForm}`}>
+        </form>
+        <form className={`${styles.form} ${styles.secondForm}`}>
           <Input
             label="Telefone"
             type="number"
@@ -127,7 +197,7 @@ export default function Signup() {
             fontWeight="normal"
             marginTop="6rem"
           />
-        </div>
+        </form>
       </div>
     </>
   );
