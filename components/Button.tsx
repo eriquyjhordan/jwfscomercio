@@ -6,12 +6,16 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   color: '#F9F9F9' | string;
   fontWeight: 'lighter' | 'normal' | 'bold' | string;
   marginTop?: string;
+  type?: 'button' | 'submit' | 'reset' | undefined;
+  onClick?: () => void;
 }
 
-export default function Button({ text, marginTop, backgroundColor, color, fontWeight, ...rest }: ButtonProps) {
+export default function Button({ text, type, onClick, marginTop, backgroundColor, color, fontWeight, ...rest }: ButtonProps) {
   return (
     <div>
       <button
+        type={type}
+        onClick={onClick}
         {...rest}
         style={{
           backgroundColor: backgroundColor,
