@@ -1,5 +1,7 @@
 import React from "react";
 
+import InputMask from 'react-input-mask';
+
 interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   placeholder: string;
   label: string;
@@ -7,9 +9,13 @@ interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   type: string;
   marginTop?: string;
   width?: string;
+  mask?: string;
+  value?: string | '';
+  disable?: boolean;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function Input({ placeholder, width, marginTop, label, name, type, ...rest }: InputProps) {
+export default function Input({ placeholder, disable, width, onChange, value, mask, marginTop, label, name, type, ...rest }: InputProps) {
   return (
     <div>
       <label
@@ -24,7 +30,11 @@ export default function Input({ placeholder, width, marginTop, label, name, type
         }}
       >
         {label}
-        <input
+        <InputMask
+          mask={mask || ''}
+          value={value}
+          onChange={onChange}
+          disabled={disable}
           {...rest}
           id={name}
           type={type}
