@@ -3,16 +3,12 @@ import React from "react";
 import Head from "next/head";
 import Image from "next/image";
 
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/index";
-
 import styles from '../../styles/signup.module.css';
 
 import jwfsLogo from '../../public/jwfs-logo.png';
 import SignUpSecondForm from "../../components/SignUpSecondForm";
 
 export default function Signup() {
-  const signUp = useSelector((state: RootState) => state.signUp);
   return (
     <>
       <Head>
