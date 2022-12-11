@@ -1,13 +1,12 @@
 import React from "react";
 
-interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   text: string;
   backgroundColor: '#6421FF' | '#0072D2' | string;
   color: '#F9F9F9' | string;
   fontWeight: 'lighter' | 'normal' | 'bold' | string;
   marginTop?: string;
   type?: 'button' | 'submit' | 'reset' | undefined;
-  onClick?: () => void;
 }
 
 export default function Button({ text, type, onClick, marginTop, backgroundColor, color, fontWeight, ...rest }: ButtonProps) {
