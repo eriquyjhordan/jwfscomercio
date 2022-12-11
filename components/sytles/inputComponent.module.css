@@ -1,0 +1,23 @@
+.input {
+  height: 4.6rem;
+  display: block;
+  border: none;
+  font-size: 1.5rem;
+  text-align: start;
+  line-height: 5rem;
+  border-radius: 0.4rem;
+  background-color: #E8F0FE;
+  color: #292E3F;
+  font-weight: normal;
+  margin-top: 0.8rem;
+  padding-inline: 1.2rem;
+  outline: none;
+}
+
+.label {
+  display: block;
+  font-size: 1.6rem;
+  color: #CACACA;
+  font-weight: normal;
+  text-align: start;
+}
