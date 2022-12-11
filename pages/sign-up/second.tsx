@@ -1,14 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import Head from "next/head";
 import Image from "next/image";
 
-import styles from '../styles/signup.module.css';
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/index";
 
-import jwfsLogo from '../public/jwfs-logo.png';
-import SignUpFirstForm from "../components/SignUpFirstForm";
+import styles from '../../styles/signup.module.css';
+
+import jwfsLogo from '../../public/jwfs-logo.png';
+import SignUpSecondForm from "../../components/SignUpSecondForm";
 
 export default function Signup() {
+  const signUp = useSelector((state: RootState) => state.signUp);
   return (
     <>
       <Head>
@@ -29,8 +33,7 @@ export default function Signup() {
         <h1 className={styles.logo}>
           <Image src={jwfsLogo} alt="jwfs Logo" width={130} height={68} priority />
         </h1>
-        <SignUpFirstForm />
-
+        <SignUpSecondForm />
       </div>
     </>
   );
