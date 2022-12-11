@@ -19,6 +19,7 @@ const signUp = createSlice({
     state: '',
     street: '',
     complement: '',
+    number: '',
   },
 
   reducers: {
@@ -42,6 +43,9 @@ const signUp = createSlice({
     },
     setStreet: (state, action: PayloadAction<string>) => {
       state.street = action.payload;
+    },
+    setNumber: (state, action: PayloadAction<string>) => {
+      state.number = action.payload;
     },
     setComplement: (state, action: PayloadAction<string>) => {
       state.complement = action.payload;
@@ -72,6 +76,7 @@ export const {
   setAddress,
   clearAddress,
   setComplement,
+  setNumber,
 } = signUp.actions;
 
 export default signUp.reducer;
