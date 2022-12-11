@@ -6,20 +6,47 @@ import Input from "./Input";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/index";
 
+import { supabase } from "../service/supabaseClient";
+
 import {
   setPhone,
   setEmail,
   setPassword,
   setConfirmPassword,
 } from "../redux/signUp.store";
+import { useRouter } from "next/router";
 
 export default function SignUpSecondForm() {
   const dispatch = useDispatch();
   const signUp = useSelector((state: RootState) => state.signUp);
+  const routes = useRouter();
 
 
-  function handleSubmit(event: any) {
+  async function handleSubmit(event: any) {
     event.preventDefault();
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email: signUp.email,
+        password: signUp.password,
+        options: {
+          data: {
+            fullname: signUp.fullname,
+            zipcode: signUp.zipcode,
+            city: signUp.city,
+            neighborhood: signUp.neighborhood,
+            state: signUp.state,
+            street: signUp.street,
+            complement: signUp.complement,
+            number: signUp.number,
+            phone: signUp.phone,
+          }
+        }
+      });
+      routes.push("/emailVerification");
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
