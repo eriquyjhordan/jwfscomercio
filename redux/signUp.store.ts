@@ -20,6 +20,11 @@ const signUp = createSlice({
     street: '',
     complement: '',
     number: '',
+    phone: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    isFirstFormValid: false,
   },
 
   reducers: {
@@ -62,6 +67,21 @@ const signUp = createSlice({
       state.state = '';
       state.street = '';
     },
+    setPhone: (state, action: PayloadAction<string>) => {
+      state.phone = action.payload;
+    },
+    setEmail: (state, action: PayloadAction<string>) => {
+      state.email = action.payload;
+    },
+    setPassword: (state, action: PayloadAction<string>) => {
+      state.password = action.payload;
+    },
+    setConfirmPassword: (state, action: PayloadAction<string>) => {
+      state.confirmPassword = action.payload;
+    },
+    setIsFirstFormValid: (state, action: PayloadAction<boolean>) => {
+      state.isFirstFormValid = action.payload;
+    },
   },
 });
 
@@ -77,6 +97,11 @@ export const {
   clearAddress,
   setComplement,
   setNumber,
+  setPhone,
+  setEmail,
+  setPassword,
+  setConfirmPassword,
+  setIsFirstFormValid,
 } = signUp.actions;
 
 export default signUp.reducer;
