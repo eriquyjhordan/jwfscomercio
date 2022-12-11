@@ -18,6 +18,7 @@ export default function EmailVerification() {
           {`
             body {
               background: linear-gradient(0deg, #060918 10.94%, #14253D 85%);
+              height: 100vh;
             }
           `}
         </style>
@@ -36,6 +37,10 @@ export default function EmailVerification() {
         </Link>
         <Link href="/">
           <Image src={gmailButton} alt="Gmail button" className={styles.imageButton} />
+        </Link>
+        <p className={styles.warninText} style={{ marginTop: '8.6rem' }}>Precisa de ajuda?</p>
+        <Link href="/">
+          <Image src={whatsappButton} alt="Whatsapp button" className={styles.imageButton} />
         </Link>
       </div>
     </>
