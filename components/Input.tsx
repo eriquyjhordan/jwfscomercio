@@ -2,6 +2,10 @@ import React from "react";
 
 import InputMask from 'react-input-mask';
 
+import styles from "./sytles/inputComponent.module.css";
+
+
+
 interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   placeholder: string;
   label: string;
@@ -12,22 +16,17 @@ interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   mask?: string;
   value?: string | '';
   disable?: boolean;
+  required?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function Input({ placeholder, disable, width, onChange, value, mask, marginTop, label, name, type, ...rest }: InputProps) {
+export default function Input({ placeholder, disable, width, required, onChange, value, mask, marginTop, label, name, type, ...rest }: InputProps) {
   return (
     <div>
       <label
         htmlFor={name}
-        style={{
-          display: 'block',
-          fontSize: '1.6rem',
-          color: '#CACACA',
-          fontWeight: 'normal',
-          textAlign: 'start',
-          marginTop: marginTop || '0',
-        }}
+        className={styles.label}
+        style={{ marginTop: marginTop || '0', }}
       >
         {label}
         <InputMask
@@ -35,26 +34,13 @@ export default function Input({ placeholder, disable, width, onChange, value, ma
           value={value}
           onChange={onChange}
           disabled={disable}
+          required={required}
           {...rest}
           id={name}
           type={type}
           placeholder={placeholder}
-          style={{
-            width: width || '32.7rem',
-            height: '4.6rem',
-            display: 'block',
-            border: 'none',
-            fontSize: '1.5rem',
-            textAlign: 'start',
-            lineHeight: '5rem',
-            borderRadius: '0.4rem',
-            backgroundColor: '#E8F0FE',
-            color: '#292E3F',
-            fontWeight: 'normal',
-            marginTop: '0.8rem',
-            paddingInline: '1.2rem',
-            outline: 'none',
-          }}
+          className={styles.input}
+          style={{ width: width || '32.7rem', }}
         />
       </label>
     </div>
