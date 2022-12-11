@@ -1,5 +1,6 @@
 import styles from '../styles/Index.module.css';
 import Image from 'next/image';
+
 import backgroundImage from '../public/images/background.webp';
 import jwfsLogo from '../public/jwfs-logo.png';
 import tveExpress from '../public/images/tve-express.webp';
