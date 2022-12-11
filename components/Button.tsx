@@ -24,12 +24,13 @@ export default function Button({ text, type, onClick, marginTop, backgroundColor
           maxWidth: '32.7rem',
           padding: '0 14rem',
           height: '5rem',
-          display: 'block',
           border: 'none',
           fontSize: '1.5rem',
           textAlign: 'center',
           lineHeight: '5rem',
           borderRadius: '0.4rem',
+          display: 'flex',
+          justifyContent: 'center',
           marginTop: marginTop,
         }}
       >{text}</button>
