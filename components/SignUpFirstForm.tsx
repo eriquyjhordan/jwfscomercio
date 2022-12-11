@@ -19,14 +19,23 @@ import {
   setCity,
   setState,
   setComplement,
-  setNumber
+  setNumber,
 } from "../redux/signUp.store";
 import Button from "./Button";
+import { useRouter } from "next/router";
 
 
 export default function SignUpFirstForm() {
+  const routes = useRouter();
   const dispatch = useDispatch();
   const signUp = useSelector((state: RootState) => state.signUp);
+
+  function handleSubmit(e: any) {
+    e.preventDefault();
+    if (signUp.fullname !== '' && signUp.zipcode !== '' && signUp.street !== '' && signUp.number !== '' && signUp.neighborhood !== '' && signUp.city !== '' && signUp.state !== '') {
+      routes.push('/sign-up/second');
+    }
+  }
 
   useEffect(() => {
     if (signUp.zipcode !== '' && !(signUp.zipcode.split('-')[0].includes('_') || signUp.zipcode.split('-')[1].includes('_'))) {
@@ -153,6 +162,7 @@ export default function SignUpFirstForm() {
         fontWeight="normal"
         marginTop="4rem"
         type="submit"
+        onClick={(e) => handleSubmit(e)}
       />
     </form>
   );
