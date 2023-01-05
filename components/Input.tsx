@@ -1,4 +1,4 @@
-import React from "react";
+import React, { RefObject } from "react";
 
 import InputMask from 'react-input-mask';
 

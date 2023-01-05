@@ -1,6 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
 import React from "react";
+import 'react-toastify/dist/ReactToastify.css';
+
+import { ToastContainer, toast } from 'react-toastify';
+import { ClipLoader } from 'react-spinners';
+
 import styles from '../styles/login.module.css';
 
 import { supabase } from "../service/supabaseClient";
@@ -13,17 +18,27 @@ import Button from "../components/Button";
 export default function Login() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
+  const notify = (message: string) => toast.error(message);
 
   async function handleSubmit(event: any) {
     event.preventDefault();
+    setLoading(true);
     try {
-      const { data: { session } } = await supabase.auth.signInWithPassword({
+      const { data: { session }, error } = await supabase.auth.signInWithPassword({
         email: email,
         password: password,
       });
       localStorage.setItem('session', JSON.stringify(session));
+      if (error) {
+        notify("E-mail ou senha incorretos");
+        setLoading(false);
+      }
     } catch (error) {
-      console.log(error);
+      console.log('there was an error');
+      setLoading(false);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -70,15 +85,31 @@ export default function Login() {
           Esqueceu sua senha?
         </Link>
         <Button
-          text="Entrar"
+          text={loading ? <ClipLoader color="#f9f9f9" size={20} /> : 'Entrar'}
           fontWeight="bold"
           backgroundColor="#0072D2"
           color="#f9f9f9"
           onClick={handleSubmit}
+          disabled={loading}
         />
         <Link href="/sign-up" className={styles.createAnAccout}>
           Não tem uma conta? Crie aqui
         </Link>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          style={{
+            fontSize: '1.6rem',
+          }}
+        />
       </div>
     </>
   );

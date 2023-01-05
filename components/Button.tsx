@@ -1,7 +1,7 @@
 import React from "react";
 
 interface ButtonProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-  text: string;
+  text: string | React.ReactNode;
   backgroundColor: '#6421FF' | '#0072D2' | string;
   color: '#F9F9F9' | string;
   fontWeight: 'lighter' | 'normal' | 'bold' | string;
@@ -31,6 +31,7 @@ export default function Button({ text, type, onClick, marginTop, backgroundColor
           borderRadius: '0.4rem',
           display: 'flex',
           justifyContent: 'center',
+          alignItems: 'center',
           marginTop: marginTop,
         }}
       >{text}</button>
