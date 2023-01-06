@@ -3,6 +3,8 @@ import React from "react";
 import Button from "./Button";
 import Input from "./Input";
 
+import styles from "./sytles/secondForm.module.css";
+
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/index";
 
@@ -20,6 +22,35 @@ export default function SignUpSecondForm() {
   const dispatch = useDispatch();
   const signUp = useSelector((state: RootState) => state.signUp);
   const routes = useRouter();
+  const [error, setError] = React.useState('');
+  const [focused, setFocused] = React.useState(false);
+  const [requirements, setRequirements] = React.useState({
+    length: false,
+    capitalLetter: false,
+    lowercaseLetter: false,
+    number: false,
+    specialChar: false,
+  });
+
+  function handleCreatePassword(password: string) {
+    dispatch(setPassword(password));
+    setError('');
+    setRequirements({
+      length: password.length >= 8,
+      capitalLetter: /[A-Z]/.test(password),
+      lowercaseLetter: /[a-z]/.test(password),
+      number: /\d/.test(password),
+      specialChar: /[@$!%*?&]/.test(password),
+    });
+
+  }
+
+  function handleBlur(event: any) {
+    setFocused(false);
+    if (!requirements.length) {
+      setError('A senha não é válida');
+    }
+  }
 
 
   async function handleSubmit(event: any) {
@@ -89,7 +120,10 @@ export default function SignUpSecondForm() {
         marginTop="2.4rem"
         required
         value={signUp.password}
-        onChange={({ target }) => dispatch(setPassword(target.value))}
+        onChange={({ target }) => handleCreatePassword(target.value)}
+        onBlur={handleBlur}
+        onFocus={() => setFocused(true)}
+        style={{ border: error ? '1px solid red' : '' }}
       />
       <Input
         label="Confirme sua senha*"
@@ -101,6 +135,26 @@ export default function SignUpSecondForm() {
         value={signUp.confirmPassword}
         onChange={({ target }) => dispatch(setConfirmPassword(target.value))}
       />
+      <div className={styles.requirements}>
+        {error && <p className={styles.hasAnError}>{error}</p>}
+        {focused && (
+          <ul className={styles.requirementsList}>
+            <li className={styles.requirement}>
+              Deve conter 8 caracteres: {requirements.length ? '✔️' : '❌'}
+            </li>
+            <li className={styles.requirement}>
+              Pelo menos uma letra maiúscula: {requirements.capitalLetter ? '✔️' : '❌'}
+            </li>
+            <li className={styles.requirement}>
+              Pelo menos uma letra minuscula: {requirements.lowercaseLetter ? '✔️' : '❌'}
+            </li>
+            <li className={styles.requirement}>Deve conter um número: {requirements.number ? '✔️' : '❌'}</li>
+            <li className={styles.requirement}>
+              Deve conter um caractere especial: {requirements.specialChar ? '✔️' : '❌'}
+            </li>
+          </ul>
+        )}
+      </div>
       <Button
         text="Cadastrar"
         backgroundColor="#0072D2"
@@ -108,6 +162,7 @@ export default function SignUpSecondForm() {
         fontWeight="normal"
         marginTop="6rem"
         onClick={(e) => handleSubmit(e)}
+        type="submit"
       />
     </form>
   );
