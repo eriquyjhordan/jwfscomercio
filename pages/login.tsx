@@ -48,7 +48,7 @@ export default function Login() {
         <h1>Desculpe este site está disponível somente para celulares...</h1>
         <h2>Em breve teremos a versão para computadores</h2>
       </div>
-      <div className={`${styles.wrapper} ${styles.mobile}`}>
+      <form className={`${styles.wrapper} ${styles.mobile}`}>
         <Head>
           <style>
             {`
@@ -91,6 +91,7 @@ export default function Login() {
           color="#f9f9f9"
           onClick={handleSubmit}
           disabled={loading}
+          type="submit"
         />
         <Link href="/sign-up" className={styles.createAnAccout}>
           Não tem uma conta? Crie aqui
@@ -110,7 +111,7 @@ export default function Login() {
             fontSize: '1.6rem',
           }}
         />
-      </div>
+      </form>
     </>
   );
 }
