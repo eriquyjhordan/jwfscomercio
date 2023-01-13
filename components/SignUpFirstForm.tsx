@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
+
 import cepPromisse from 'cep-promise';
+import * as Yup from 'yup';
 
 import Input from "./Input";
 
@@ -29,11 +31,46 @@ export default function SignUpFirstForm() {
   const routes = useRouter();
   const dispatch = useDispatch();
   const signUp = useSelector((state: RootState) => state.signUp);
+  const firstForm = {
+    fullname: signUp.fullname,
+    email: signUp.email,
+    zipcode: signUp.zipcode,
+    city: signUp.city,
+    neighborhood: signUp.neighborhood,
+    state: signUp.state,
+    street: signUp.street,
+    number: Number(signUp.number),
+  }
+  const [formError, setFormError] = React.useState<object[]>([]);
 
-  function handleSubmit(e: any) {
+  const validationSchema = Yup.object().shape({
+    fullname: Yup.string()
+      .required('O nome completo é obrigatório')
+      .matches(/^[a-zA-Z ]{5,}(?=.*\s)$/, "O nome completo deve conter um espaço, não conter números ou caracteres especiais e ter pelo menos 5 caracteres"),
+    email: Yup.string().email('Email invalido').required('Email é obrigatório'),
+    zipcode: Yup.string().matches(/^\d{5}-?\d{3}$|^\d{8}$/, 'CEP é inválido').required('CEP é obrigatório'),
+    city: Yup.string().min(5, 'A cidade deve conter no minimo 5 caracteres').required('Cidade é obrigatória'),
+    neighborhood: Yup.string().required('Bairro é obrigatório'),
+    state: Yup.string().min(5, 'O Estado deve conter no minimo 2 caracteres').required('Estado é obrigatório'),
+    street: Yup.string().min(5, 'Rua deve conter no minimo 5 caracteres').required('Rua é obrigatória'),
+    number: Yup.number().positive('O número é obrigatório').integer().required('O número é obrigatório'),
+  });
+
+  async function handleSubmit(e: any) {
     e.preventDefault();
-    if (signUp.fullname !== '' && signUp.zipcode !== '' && signUp.street !== '' && signUp.number !== '' && signUp.neighborhood !== '' && signUp.city !== '' && signUp.state !== '') {
-      routes.push('/sign-up/second');
+    try {
+      await validationSchema.validate(firstForm, { abortEarly: false });
+      routes.push('/sign-up/second-form');
+    } catch (err) {
+      const validationErrors = [] as object[];
+      if (err instanceof Yup.ValidationError) {
+        err.inner.forEach(error => {
+          let field = error.path as keyof typeof firstForm;
+          validationErrors.push({[field]: error.message});
+        });
+        setFormError(validationErrors);
+      }
+      console.log(validationErrors);
     }
   }
 
@@ -60,6 +97,8 @@ export default function SignUpFirstForm() {
         })
     }
   }, [signUp.zipcode]);
+
+
 
   return (
     <form>

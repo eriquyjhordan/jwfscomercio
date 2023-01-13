@@ -3,6 +3,8 @@ import React from "react";
 import Head from "next/head";
 import Image from "next/image";
 
+import * as Yup from 'yup';
+
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/index";
 

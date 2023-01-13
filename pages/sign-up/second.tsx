@@ -17,6 +17,7 @@ export default function Signup() {
             body {
               background: linear-gradient(0deg, #060918 10.94%, #14253D 85%) no-repeat !important;
               background-size: cover;
+              height: 100%;
             }
           `}
         </style>

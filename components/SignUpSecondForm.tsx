@@ -3,6 +3,9 @@ import React from "react";
 import Button from "./Button";
 import Input from "./Input";
 
+import { ClipLoader } from 'react-spinners';
+import * as Yup from 'yup';
+
 import styles from "./sytles/secondForm.module.css";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -22,7 +25,8 @@ export default function SignUpSecondForm() {
   const dispatch = useDispatch();
   const signUp = useSelector((state: RootState) => state.signUp);
   const routes = useRouter();
-  const [error, setError] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
+  const [formError, setError] = React.useState('');
   const [focused, setFocused] = React.useState(false);
   const [requirements, setRequirements] = React.useState({
     length: false,
@@ -30,6 +34,22 @@ export default function SignUpSecondForm() {
     lowercaseLetter: false,
     number: false,
     specialChar: false,
+  });
+
+  const validationSchema = Yup.object().shape({
+    fullname: Yup.string()
+    .required('Fullname is required')
+    .matches(/^[a-zA-Z ]{5,}(?=.*\s)$/, "O nome completo deve conter um espaço, não conter números ou caracteres especiais e ter pelo menos 5 caracteres"),
+    email: Yup.string().email('Email invalido').required('Email é obrigatório'),
+    zipcode: Yup.string().matches(/^\d{5}-?\d{3}$|^\d{8}$/, 'CEP é inválido').required('CEP é obrigatório'),
+    city: Yup.string().min(5, 'A cidade deve conter no minimo 5 caracteres').required('Cidade é obrigatória'),
+    neighborhood: Yup.string().required('Bairro é obrigatório'),
+    state: Yup.string().min(5, 'O Estado deve conter no minimo 2 caracteres').required('Estado é obrigatório'),
+    street: Yup.string().min(5, 'Rua deve conter no minimo 5 caracteres').required('Rua é obrigatória'),
+    number: Yup.number().positive().integer().required('O número é obrigatório'),
+    phone: Yup.string()
+    .required('O telefone é obrigatório')
+    .matches(/^\+55\s\(\d{2}\)\s\d{5}-\d{4}$/, "O telefone deve estar no formato +55 (99) 99999-9999"),
   });
 
   function handleCreatePassword(password: string) {
@@ -42,7 +62,6 @@ export default function SignUpSecondForm() {
       number: /\d/.test(password),
       specialChar: /[@$!%*?&]/.test(password),
     });
-
   }
 
   function handleBlur(event: any) {
@@ -52,10 +71,61 @@ export default function SignUpSecondForm() {
     }
   }
 
+  function validateForm() {
+    setLoading(true);
+    const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(emailRegex.test(signUp.email)) {
+      setError('O e-mail não é válido');
+      setLoading(false);
+    }
+    if (signUp.password !== signUp.confirmPassword) {
+      setError('As senhas não são iguais');
+      setLoading(false);
+    }
+    if (signUp.phone.length < 14) {
+      setError('O telefone não é válido');
+      setLoading(false);
+    }
+    if (signUp.fullname.split(' ').length < 2) {
+      setError('O nome não é válido');
+      setLoading(false);
+    }
+    if (signUp.zipcode.length < 9) {
+      setError('O CEP não é válido');
+      setLoading(false);
+    }
+    if (signUp.city.length < 3) {
+      setError('A cidade não é válida');
+      setLoading(false);
+    }
+    if (signUp.neighborhood.length < 3) {
+      setError('O bairro não é válido');
+      setLoading(false);
+    }
+    if (signUp.state.length < 2) {
+      setError('O estado não é válido');
+      setLoading(false);
+    }
+    if (signUp.street.length < 3) {
+      setError('A rua não é válida');
+      setLoading(false);
+    }
+    if (signUp.number.length < 1) {
+      setError('O número não é válido');
+      setLoading(false);
+    }
+  }
+
 
   async function handleSubmit(event: any) {
     event.preventDefault();
+    setLoading(true);
     try {
+      validateForm();
+      if(formError.length > 0) {
+        setLoading(false);
+        throw new Error(formError);
+      }
       const { data, error } = await supabase.auth.signUp({
         email: signUp.email,
         password: signUp.password,
@@ -74,9 +144,11 @@ export default function SignUpSecondForm() {
         }
       });
       routes.push("/emailVerification");
+      setLoading(false);
       console.log(data);
-    } catch (error) {
-      console.log(error);
+    } catch (formError) {
+      console.log(formError);
+      setLoading(false);
     }
   }
 
@@ -123,7 +195,7 @@ export default function SignUpSecondForm() {
         onChange={({ target }) => handleCreatePassword(target.value)}
         onBlur={handleBlur}
         onFocus={() => setFocused(true)}
-        style={{ border: error ? '1px solid red' : '' }}
+        style={{ border: formError ? '1px solid red' : '' }}
       />
       <Input
         label="Confirme sua senha*"
@@ -136,7 +208,7 @@ export default function SignUpSecondForm() {
         onChange={({ target }) => dispatch(setConfirmPassword(target.value))}
       />
       <div className={styles.requirements}>
-        {error && <p className={styles.hasAnError}>{error}</p>}
+        {formError && <p className={styles.hasAnError}>{formError}</p>}
         {focused && (
           <ul className={styles.requirementsList}>
             <li className={styles.requirement}>
@@ -156,13 +228,14 @@ export default function SignUpSecondForm() {
         )}
       </div>
       <Button
-        text="Cadastrar"
-        backgroundColor="#0072D2"
+        text={loading ? <ClipLoader color="#f9f9f9" size={20} /> : 'Cadastrar'}
+        backgroundColor={ formError.length > 0 ? '#7d8b9697' : '#0072D2'}
         color="#F9F9F9"
         fontWeight="normal"
         marginTop="6rem"
         onClick={(e) => handleSubmit(e)}
         type="submit"
+        disabled={ formError.length > 0}
       />
     </form>
   );
